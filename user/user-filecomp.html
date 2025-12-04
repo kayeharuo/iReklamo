@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Complaint</title>
+
+    <!--Favicon-->
+    <link rel="icon" href="/icons/vito logo.png" type="image/x-icon">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/styles/user-filecomp.css">
+
+    <!--Google Font: Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+    <!--Navbar section-->
+    <div class="navbar">
+        <div class="leftside">
+            <img src="/icons/vito logo.png" class="nav-logo">
+            <img src="/icons/mingla logo.png" class="nav-logo">
+            <img src="/icons/ph logo.png" class="nav-logo">
+        </div>
+
+        <div class="rightside">
+            <ul>
+                <li><a href="/user/user-dashboard.html">Dashboard</a></li>
+                <li><a href="/user/user-filecomp.html">File Complaint</a></li>
+                <li><a href="/user/user-history.html">Report History</a></li>
+            </ul>
+            <button id="logout">LOGOUT</button>
+        </div>
+    </div>
+
+    <section class="body">
+        <div class="topside">
+            <p>Naay problema? iReklamo!</p>
+            <h1>BARANGAY VITO COMPLAINT AND INCIDENT REPORTING SYSTEM</h1>
+        </div>
+
+        <div class="bottompart">
+            <div class="header">
+                <h4>FILE A COMPLAINT OR INCIDENT</h4>
+            </div>
+
+            <div class="steps">
+                <span class="step active">Personal Details</span>
+                <span class="step">Complaint / Incident Details</span>
+                <span class="step">Respondent Details</span>
+                <span class="step">Summary</span>
+            </div>
+
+            <!--FORM 1: PERSONAL DETAILS-->
+            <div class="cards">
+                <div class="card active">
+                    <div class="row">
+                        <div class="col">
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="fname">
+                        </div>
+                        <div class="col">
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lname">
+                        </div>
+                        <div class="col">
+                            <label for="mname">Middle Name</label>
+                            <input type="text" id="mname" name="mname">
+                        </div>
+                        <div class="col">
+                            <label for="suffix">Suffix</label>
+                            <input type="text" id="suffix" name="suffix">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="age">Age</label>
+                            <select id="age" required>
+                                <option value="1">Below 18 years old</option>
+                                <option value="2">Between 18 – 25 years old</option>
+                                <option value="3">Between 26 – 35 years oldd</option>
+                                <option value="4">Above 35 – below 60 years oldd</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob">
+                        </div>
+                        <div class="col">
+                            <label for="status">Status</label>
+                            <select id="status" required>
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                                <option value="widowed">Widowed</option>
+                                <option value="annulled">Annulled / Separated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="contact">Contact No.</label>
+                            <input type="tel" id="contact" name="contact" maxlength="11" required>
+                        </div>
+                        <div class="col">
+                            <label for="email">E-mail Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="address">Complete Current Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!--FORM 2: COMPLAINT DETAILS-->
+                <div class="card card2">
+                    <div class="row">
+                        <h5><span style="color:red">*</span>Please provide the correct and complete details to ensure the smooth processing of your complaints.</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="type">Transaction Type</label>
+                            <select id="type" required>
+                                <option value="">Select Type</option>
+                                <option value="1">Complaint</option>
+                                <option value="2">Incident</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Select type first</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="dtincident">Date and Time of Incident</label>
+                            <input type="datetime-local" id="dtincident" name="dtincident" required>
+                        </div>
+                        <div class="col">
+                            <label for="location">Location of Incident</label>
+                            <input type="text" id="location" name="location" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="description">Detailed Description</label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="witness">Witnesses (if any)</label>
+                            <textarea id="witness" name="witness" placeholder="Mention the name or describe the person/s"></textarea>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="attachments">Attachments / Evidence (Max 3 images)</label>
+                                <input type="file" id="attachments" name="attachments" multiple accept="image/jpeg,image/jpg,image/png">
+                                <p style="color: #6b7280; font-size: 12px; margin-top: 5px;">
+                                    📷 Maximum 3 images. Accepted: JPG, JPEG, PNG only (Max 5MB each)
+                                </p>
+                                <div id="filePreview" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!--FORM 3: RESPONDENT DETAILS-->
+                <div class="card card3">
+                    <div class="row">
+                        <h5><span style="color:red">*</span>Only needed if the complaint involves a specific person or group.</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="c">Name of Respondent</label>
+                            <input type="text" id="respondent" name="respondent">
+                        </div>
+                        <div class="col">
+                            <label for="relationship">Relationship to Complainant</label>
+                            <input type="text" id="relationship" name="relationship">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="respaddress">Address</label>
+                            <input type="text" id="respaddress" name="respaddress">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="respondentdesc">Description of Respondent</label>
+                            <textarea id="respondentdesc" name="respondentdesc"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!--CARD 4: SUMMARY OF ALL DETAILS-->
+                <div class="card card4">
+                    <div class="minicardrow">
+                        <!--summary: complainant details-->
+                        <div class="minicard1">
+                            <h4>COMPLAINANT DETAILS</h4>
+                            <p>Name of Complainant: <span id="complainant" style="font-weight: bold;"></span></p>
+                            <p>Age: <span id="age" style="font-weight: bold;"></span></p>
+                            <p>Date of Birth: <span id="dob" style="font-weight: bold;"></span></p>
+                            <p>Gender: <span id="gender" style="font-weight: bold;"></span></p>
+                            <p>Status: <span id="status" style="font-weight: bold;"></span></p>
+                            <p>Contact Number: <span id="contact" style="font-weight: bold;"></span></p>
+                            <p>E-mail: <span id="email" style="font-weight: bold;"></span></p>
+                            <p>Current Address: <span id="address" style="font-weight: bold;"></span></p>
+                        </div>
+                        <!--summary: respondent information-->
+                        <div class="minicard2">
+                            <h4>RESPONDENT INFORMATION</h4>
+                            <p>Name of Respondent: <span id="respondent" style="font-weight: bold;"></span></p>
+                            <p>Relationship to Complainant: <span id="relationship" style="font-weight: bold;"></span></p>
+                            <p>Address: <span id="respaddress" style="font-weight: bold;"></span></p>
+                            <p>Description of Respondent: <span id="respondentdesc" style="font-weight: bold;"></span></p>
+                        </div>
+                    </div>
+                    <!--summary: complaint details-->
+                    <div class="minicard3">
+                        <h4>RESPONDENT INFORMATION</h4>
+                        <p>Name of Respondent: <span id="respondent" style="font-weight: bold;"></span></p>
+                        <p>Relationship to Complainant: <span id="relationship" style="font-weight: bold;"></span></p>
+                        <p>Address: <span id="respaddress" style="font-weight: bold;"></span></p>
+                        <p>Description of Respondent: <span id="respondentdesc" style="font-weight: bold;"></span></p>
+                    </div>
+
+                    <p>Attachments</p>
+                    <label style="color: #545454; font-weight: bold; margin-top: 30px;"><input type="checkbox" name="confirm" id="confirm" required> I confirm that the information provided is true and accurate.</label>
+                </div>
+            </div>
+
+            <!--BUTTONS to navigate between forms-->
+            <div class="buttons">
+                <button id="backbtn">BACK</button>
+                <button id="nextbtn">NEXT</button>
+            </div>
+        </div>
+    </section>
+
+    <!--LOGOUT MODAL-->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Logout</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelLogout" class="btn-cancel">Cancel</button>
+                <button id="confirmLogout" class="btn-confirm">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!--footnote-->
+    <section class="footnote">
+        <div class="republiclogo">
+            <img src="/icons/republic logo.png" id="republiclogo">
+        </div>
+
+        <div class="firstcolumn">
+            <div class="first">
+                <h6>REPUBLIC OF THE PHILIPPINES</h6>
+                <p>All content is in the public domain unless otherwise stated.</p>
+            </div>
+            <div class="second">
+                <h6>CONTACT NO. / TRUNK LINES</h6>
+                <p>0942-744-2287 / 402-0139</p>
+            </div>
+        </div>
+
+        <div class="secondcolumn">
+            <div class="first">
+                <h6>ABOUT GOVPH</h6>
+                <p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
+            </div>
+
+            <div class="second">
+                <ul>
+                    <li><a href="http://www.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">GOV.PH</a></li>
+                    <li><a href="http://www.officialgazette.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Official Gazette</a></li>
+                    <li><a href="https://data.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Open Data Portal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="thirdcolumn">
+            <p style="color: #979797; font-size: 12.1pt; margin-bottom: 20px;">GOVERNMENT LINKS</p>
+            <ul>
+                <li><a href="https://pco.gov.ph/" target="_blank" rel="noopener noreferrer"  style="color: #979797;">Office of the President</a></li>
+                <li><a href="https://www.ovp.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Office of the Vice President</a></li>
+                <li><a href="https://senate.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Senate of the Philippines</a></li>
+                <li><a href="https://www.congress.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">House of Representatives</a></li>
+                <li><a href="https://sc.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Supreme Court</a></li>
+                <li><a href="https://ca.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Court of Appeals</a></li>
+                <li><a href="https://sb.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Sandiganbayan</a></li>
+            </ul>
+        </div>
+    </section>
+
+    
+
+    <!-- Load Supabase from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Load your Supabase config -->
+    <script src="/scripts/supabaseClient.js"></script>
+
+    <script src="/scripts/user-filecomp.js"></script>
+
+</body>
+</html>

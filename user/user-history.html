@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report History</title>
+
+    <!--Favicon-->
+    <link rel="icon" href="/icons/vito logo.png" type="image/x-icon">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/styles/user-history.css">
+
+    <!--Google Font: Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+    
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+    
+    <!--For menu toggle button-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleButton = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            toggleButton.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <!--Navbar section-->
+    <div class="navbar">
+        <div class="leftside">
+            <img src="/icons/vito logo.png" class="nav-logo">
+            <img src="/icons/mingla logo.png" class="nav-logo">
+            <img src="/icons/ph logo.png" class="nav-logo">
+        </div>
+
+        <div class="rightside">
+            <ul>
+                <li><a href="/user/user-dashboard.html">Dashboard</a></li>
+                <li><a href="/user/user-filecomp.html">File Complaint</a></li>
+                <li><a href="/user/user-history.html">Report History</a></li>
+            </ul>
+            <button id="logout">LOGOUT</button>
+        </div>
+    </div>
+    
+</body>
+    <section class="body">
+        <div class="topside">
+            <p>Naay problema? iReklamo!</p>
+            <h1>BARANGAY VITO COMPLAINT AND INCIDENT REPORTING SYSTEM</h1>
+        </div>
+
+        <div class="bottompart">
+            <div class="header">
+                <h4>REPORT / COMPLAINT HISTORY</h4>
+            </div>
+
+            <div class="historytable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 250px;">Tracking Number</th>
+                            <th style="width: 120px;">Date Created</th>
+                            <th style="width: 120px;">Type</th>
+                            <th style="width: 150px;">Category</th>
+                            <th style="width: 180px;">Respondent</th>
+                            <th style="width: 150px;">Status</th>
+                            <th style="width: 120px;">Last Updated</th>
+                            <th style="width: 150px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!--LOGOUT MODAL-->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Logout</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelLogout" class="btn-cancel">Cancel</button>
+                <button id="confirmLogout" class="btn-confirm">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!--footnote-->
+    <section class="footnote">
+        <div class="republiclogo">
+            <img src="/icons/republic logo.png" id="republiclogo">
+        </div>
+
+        <div class="firstcolumn">
+            <div class="first">
+                <h6>REPUBLIC OF THE PHILIPPINES</h6>
+                <p>All content is in the public domain unless otherwise stated.</p>
+            </div>
+            <div class="second">
+                <h6>CONTACT NO. / TRUNK LINES</h6>
+                <p>0942-744-2287 / 402-0139</p>
+            </div>
+        </div>
+
+        <div class="secondcolumn">
+            <div class="first">
+                <h6>ABOUT GOVPH</h6>
+                <p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
+            </div>
+
+            <div class="second">
+                <ul>
+                    <li><a href="http://www.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">GOV.PH</a></li>
+                    <li><a href="http://www.officialgazette.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Official Gazette</a></li>
+                    <li><a href="https://data.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Open Data Portal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="thirdcolumn">
+            <p style="color: #979797; font-size: 12.1pt; margin-bottom: 20px;">GOVERNMENT LINKS</p>
+            <ul>
+                <li><a href="https://pco.gov.ph/" target="_blank" rel="noopener noreferrer"  style="color: #979797;">Office of the President</a></li>
+                <li><a href="https://www.ovp.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Office of the Vice President</a></li>
+                <li><a href="https://senate.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Senate of the Philippines</a></li>
+                <li><a href="https://www.congress.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">House of Representatives</a></li>
+                <li><a href="https://sc.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Supreme Court</a></li>
+                <li><a href="https://ca.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Court of Appeals</a></li>
+                <li><a href="https://sb.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Sandiganbayan</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Load Supabase from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Load your Supabase config -->
+    <script src="/scripts/supabaseClient.js"></script>
+
+    <script src="/scripts/user-history.js"></script>
+</body>
+
+</html>

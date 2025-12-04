@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vito iReklamo</title>
+
+    <!--Favicon-->
+    <link rel="icon" href="/icons/vito logo.png" type="image/x-icon">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/styles/user-landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!--Google Font: Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+
+    <!--Navbar section-->
+    <div class="navbar">
+        <div class="leftside">
+            <img src="/icons/vito logo.png" class="nav-logo">
+            <img src="/icons/mingla logo.png" class="nav-logo">
+            <img src="/icons/ph logo.png" class="nav-logo">
+        </div>
+
+        <div class="rightside">
+            <p>Don't have an account yet?</p>
+            <button id="register" onclick="window.location.href='/user/user-registration.html'">REGISTER</button>
+        </div>
+    </div>
+
+    <!--BODY-->
+    <section class="body">
+        <div class="topside">
+            <p>Naay problema? iReklamo!</p>
+            <h1>BARANGAY VITO COMPLAINT AND INCIDENT REPORTING SYSTEM</h1>
+        </div>
+
+        <div class="bottompart">
+            <div class="about">
+                <h4>About iReklamo</h4>
+                <p>The Barangay Vito Complaint and Incident Reporting System (iReklamo) serves as an
+                    online system for reporting and managing complaints and incidents within the community.
+                    It is created to make it easier for residents to reach out to barangay officials and for officials
+                    to respond in a timely and organized manner.<br><br>
+                    
+                    Through iReklamo, residents can submit reports such as noise disturbances, sanitation issues, disputes,
+                    or other incidents. We pledge to address every concern with fairness, respond to reports promptly, and
+                    take necessary action to maintain the safety and welfare of the community.
+                </p>
+            </div>
+
+            <div class="logincard">
+                <label for="email">E-mail Address *</label>
+                <input type="text" id="email" name="email" placeholder="Enter here">
+
+                <label for="password">Password *</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Enter here">
+                    <i class="fas fa-eye-slash toggle-password"></i>
+                </div>
+
+                <div class="loginbutton">
+                    <a href="#" style="cursor: pointer;">Forgot Password</a>
+                    <button id="login">LOGIN</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Forgot Password</h4>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Enter your email address to reset your password.</p>
+                <div class="form-group">
+                    <label for="resetEmail">Email Address</label>
+                    <input type="email" id="resetEmail" name="resetEmail" placeholder="Enter your email">
+                </div>
+                <div class="modal-buttons">
+                    <button id="cancelReset">Cancel</button>
+                    <button id="sendReset">Send Reset Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--LOGIN ERROR MODAL-->
+    <div id="loginErrorModal" class="login-error-modal">
+        <div class="login-error-modal-content">
+            <div class="login-error-modal-header">
+                <svg class="login-error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                <h2>Login Failed</h2>
+            </div>
+            <div class="login-error-modal-body">
+                <p id="loginErrorMessage">Invalid email or password.</p>
+            </div>
+            <div class="login-error-modal-footer">
+                <button id="closeLoginError" class="login-error-btn-close">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <!--LOGIN SUCESS MODAL-->
+    <div id="loginSuccessModal" class="login-success-modal">
+        <div class="login-success-modal-content">
+            <div class="login-success-modal-header">
+                <div class="login-success-icon-container">
+                    <svg class="login-success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h2>Login Successful!</h2>
+            </div>
+            <div class="login-success-modal-body">
+                <p>Redirecting to dashboard...</p>
+                <div class="login-success-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--footnote-->
+    <section class="footnote">
+        <div class="republiclogo">
+            <img src="/icons/republic logo.png" id="republiclogo">
+        </div>
+
+        <div class="firstcolumn">
+            <div class="first">
+                <h6>REPUBLIC OF THE PHILIPPINES</h6>
+                <p>All content is in the public domain unless otherwise stated.</p>
+            </div>
+            <div class="second">
+                <h6>CONTACT NO. / TRUNK LINES</h6>
+                <p>0942-744-2287 / 402-0139</p>
+            </div>
+        </div>
+
+        <div class="secondcolumn">
+            <div class="first">
+                <h6>ABOUT GOVPH</h6>
+                <p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
+            </div>
+
+            <div class="second">
+                <ul>
+                    <li><a href="http://www.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">GOV.PH</a></li>
+                    <li><a href="http://www.officialgazette.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Official Gazette</a></li>
+                    <li><a href="https://data.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Open Data Portal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="thirdcolumn">
+            <p style="color: #979797; font-size: 12.1pt; margin-bottom: 20px;">GOVERNMENT LINKS</p>
+            <ul>
+                <li><a href="https://pco.gov.ph/" target="_blank" rel="noopener noreferrer"  style="color: #979797;">Office of the President</a></li>
+                <li><a href="https://www.ovp.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Office of the Vice President</a></li>
+                <li><a href="https://senate.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Senate of the Philippines</a></li>
+                <li><a href="https://www.congress.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">House of Representatives</a></li>
+                <li><a href="https://sc.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Supreme Court</a></li>
+                <li><a href="https://ca.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Court of Appeals</a></li>
+                <li><a href="https://sb.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Sandiganbayan</a></li>
+            </ul>
+        </div>
+
+    </section>
+
+
+    <!-- Load Supabase from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Load your Supabase config -->
+    <script src="/scripts/supabaseClient.js"></script>
+
+    <!-- JS file for landing page-->
+    <script src="/scripts/user-landing.js"></script>
+</body>
+
+</html>
+

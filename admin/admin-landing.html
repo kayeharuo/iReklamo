@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+
+    <!--Favicon-->
+    <link rel="icon" href="/icons/vito logo.png" type="image/x-icon">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/styles/admin-landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!--Google Font: Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+
+    <!--Supabase-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/scripts/supabaseClient.js"></script>
+    <script src="/scripts/admin-landing.js" defer></script>
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+    
+    <!--For menu toggle button-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleButton = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (toggleButton && navLinks) {
+                toggleButton.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+
+    <!--Navbar section-->
+    <div class="navbar">
+        <div class="leftside">
+            <img src="/icons/vito logo.png" class="nav-logo">
+            <img src="/icons/mingla logo.png" class="nav-logo">
+            <img src="/icons/ph logo.png" class="nav-logo">
+        </div>
+
+        <div class="rightside">
+            <p>iReklamo Admin</p>
+        </div>
+    </div>
+
+    <!--BODY-->
+    <section class="body">
+        <div class="topside">
+            <p>Naay problema? iReklamo!</p>
+            <h1>BARANGAY VITO COMPLAINT AND INCIDENT REPORTING SYSTEM</h1>
+        </div>
+
+        <div class="bottompart">
+            <div class="header">
+                <h4>WELCOME TO ADMIN PORTAL</h4>
+            </div>
+
+            <form id="adminLoginForm" class="logincard">
+                <label for="username">Email Address *</label>
+                <input type="email" id="username" name="username" placeholder="Enter your email" required>
+
+                <label for="password">Password *</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <i class="fas fa-eye-slash toggle-password"></i>
+                </div>
+                
+                <div class="loginbutton">
+                    <button type="submit" id="login">LOGIN</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--LOGIN ERROR MODAL-->
+    <div id="loginErrorModal" class="login-error-modal">
+        <div class="login-error-modal-content">
+            <div class="login-error-modal-header">
+                <svg class="login-error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                <h2>Login Failed</h2>
+            </div>
+            <div class="login-error-modal-body">
+                <p id="loginErrorMessage">Invalid email or password.</p>
+            </div>
+            <div class="login-error-modal-footer">
+                <button id="closeLoginError" class="login-error-btn-close">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!--LOGIN SUCESS MODAL-->
+    <div id="loginSuccessModal" class="login-success-modal">
+        <div class="login-success-modal-content">
+            <div class="login-success-modal-header">
+                <div class="login-success-icon-container">
+                    <svg class="login-success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h2>Login Successful!</h2>
+            </div>
+            <div class="login-success-modal-body">
+                <p>Redirecting to dashboard...</p>
+                <div class="login-success-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--footnote-->
+    <section class="footnote">
+       <p>© 2025 iReklamo. All rights reserved.</p>
+    </section>
+</body>
+</html>

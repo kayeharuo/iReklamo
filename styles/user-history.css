@@ -1,0 +1,372 @@
+html {
+    scroll-behavior: smooth; 
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+    height: 120px;
+}
+
+.navbar .leftside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+    width: 40%;
+}
+
+.navbar .leftside .nav-logo {
+    width: 85px;
+    height: 85px;
+    margin-right: 15px;
+}
+
+.navbar .rightside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 200px;
+    margin-right: 40px;
+    width: 50%;
+}
+
+.navbar .rightside .ul {
+    list-style: none;
+}
+
+.navbar .rightside ul li {
+    display: inline-block;
+    padding: 0 15px;
+    color: #545454;
+    font-size: 15.7pt;
+}
+
+.navbar .rightside ul li a {
+    color: #545454;
+    text-decoration: none;
+}
+
+.navbar .rightside ul li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.navbar .rightside #logout {
+    background-color: #1e15b6;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 133px;
+    height: 45px;
+    font-size: 11pt;
+    margin-left: 10px;
+}
+
+.navbar .rightside #logout:hover {
+    cursor: pointer;
+    background-color: #161175;
+}
+
+
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.body .topside {
+    display: flex;
+    flex-direction: column;
+    background-color: #3f761f;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    height: 212px;
+    margin-bottom: 40px;
+}
+
+.body .topside p {
+    text-align: center;
+    font-size: 15pt;
+    margin-bottom: 10px;
+}
+
+.body .topside h1 {
+    width: 70%;
+    text-align: center;
+    font-size: 38pt;
+}
+
+.body .bottompart {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.body .bottompart .header h4 {
+    color: #545454;
+    font-size: 13.4pt;
+    margin-bottom: 35px;
+}
+
+.body .bottompart .historytable {
+    margin-bottom: 40px;
+}
+
+.body .bottompart .historytable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.body .bottompart .historytable th,
+.body .bottompart .historytable td {
+    border: 1px solid #b4b4b4;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+.body .bottompart .historytable thead {
+    background-color:#1e15b6;
+    color: white;
+    font-size: 10pt;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.modal-body {
+    padding: 20px 24px;
+}
+
+.modal-body p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    border-top: 1px solid #e5e7eb;
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.btn-cancel:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-confirm {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: #dc2626;
+}
+
+.btn-confirm:active {
+    transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.footnote {
+    display: flex;
+    flex-direction: row;
+    background-color: #efefef;
+    width: 100%;
+    height: 266px;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.footnote .republiclogo #republiclogo {
+    width: 174px;
+    height: 174px;
+    margin-right: 50px;
+}
+
+.foonote .firstcolumn {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footnote .firstcolumn .first {
+    margin-bottom: 35px;
+}
+
+.footnote .firstcolumn .first h6 {
+    font-weight: normal;
+    font-size: 12.1pt;
+    color: #979797;
+    margin-bottom: 20px;
+}
+
+.footnote .firstcolumn .first p {
+    color: #979797;
+    font-size: 11.1pt;
+    width: 294px;
+}
+
+.footnote .firstcolumn .second h6 {
+    font-weight: normal;
+    font-size: 12.1pt;
+    color: #979797;
+    margin-bottom: 20px;
+}
+
+.footnote .firstcolumn .second p {
+    color: #979797;
+    font-size: 11.1pt;
+}
+
+.footnote .secondcolumn {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 319px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.foonote .secondcolumn .first {
+    display: flex;
+    flex-direction: column;
+}
+
+.footnote .secondcolumn .first h6 {
+    font-weight: normal;
+    font-size: 12.1pt;
+    color: #979797;
+    margin-bottom: 20px;
+}
+
+.footnote .secondcolumn p {
+    color: #979797;
+    font-size: 11.1pt;
+}
+
+.footnote .secondcolumn li {
+    color: #979797;
+    font-size: 11.1pt;
+    list-style-type: none;
+    line-height: 1.3rem;
+}
+
+.footnote .secondcolumn li a:hover {
+    text-decoration: underline;
+}
+
+.footnote .thirdcolumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.footnote .thirdcolumn  li {
+    color: #979797;
+    font-size: 11.1pt;
+    list-style-type: none;
+    line-height: 1.3rem;
+}
+
+.footnote .thirdcolumn li a:hover {
+    text-decoration: underline;
+}
+
+.historytable th,
+.historytable td {
+    text-align: center !important;
+    vertical-align: middle !important;
+}

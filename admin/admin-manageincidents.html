@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Incidents</title>
+
+    <!--Favicon-->
+    <link rel="icon" href="/icons/vito logo.png" type="image/x-icon">
+
+    <!--Javascript-->
+    <script src="/scripts/admin-manageincidents.js" defer></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/styles/admin-manageincidents.css">
+
+    <!--Google Font: Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+    
+    <!--For menu toggle button-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleButton = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            toggleButton.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <!--Navbar section-->
+    <div class="navbar">
+        <div class="leftside">
+            <img src="/icons/vito logo.png" class="nav-logo">
+            <img src="/icons/mingla logo.png" class="nav-logo">
+            <img src="/icons/ph logo.png" class="nav-logo">
+        </div>
+
+        <div class="rightside">
+            <p>iReklamo Admin</p>
+        </div>
+    </div>
+
+    <section class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <div class="profile-img">
+                    <img src="/icons/default-avatar.png" alt="Profile">
+                </div>
+                <h3></h3>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a href="/admin/admin-dashboard.html">
+                        <span class="menu-item">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <span class="menu-item">Manage Records</span>
+                        <span class="dropdown-icon">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/admin/admin-managecomplaints.html">Complaints</a></li>
+                        <li><a href="/admin/admin-manageincidents.html">Incidents</a></li>
+                    </ul>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <span class="menu-item">Manage Users</span>
+                        <span class="dropdown-icon">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/admin/admin-manageresident.html">Residents</a></li>
+                        <li><a href="/admin/admin-manageadmin.html">Admins</a></li>
+                        <li><a href="/admin/admin-managedeact.html">Deactivated Admins</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/admin-settings.html">
+                        <span class="menu-item">Account Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="logoutLink" href="/admin/admin-landing.html">
+                        <span class="menu-item">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="card1">
+                <div class="header">
+                    <h4>MANAGE INCIDENTS</h4>
+                </div>
+
+                <!--table-->
+                <div class="container">
+                    <div class="table-controls">
+                        <div class="entries-control">
+                            <span>Show</span>
+                            <select id="entriesSelect">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <span>entries</span>
+                        </div>
+                        <div class="search-control">
+                            <span>Search:</span>
+                            <input type="text" id="searchInput" placeholder="">
+                        </div>
+                    </div>
+
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <th>Date Filed</th>
+                                <th>Category</th>
+                                <th>Complainant</th>
+                                <th>Respondent</th>
+                                <th>Status</th>
+                                <th>Last Updated</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+
+                    <div class="pagination-container">
+                        <div class="showing-info" id="showingInfo">
+                            Showing 1 to 10 of 57 entries
+                        </div>
+                        <div class="pagination" id="pagination">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--LOGOUT MODAL-->
+    <div id="logoutModal" class="logout-modal">
+        <div class="logout-modal-content">
+            <div class="logout-modal-header">
+                <h2>Confirm Logout</h2>
+            </div>
+            <div class="logout-modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="logout-modal-footer">
+                <button id="cancelLogout" class="logout-btn-cancel">Cancel</button>
+                <button id="confirmLogout" class="logout-btn-confirm">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!--footnote--> 
+    <section class="footnote">
+       <p>© 2025 iReklamo. All rights reserved.</p>
+    </section>
+    <!--Supabase-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/scripts/supabaseClient.js"></script>
+    <script src="/scripts/admin-session-manager.js" defer></script>  
+</body>
+
+</html>

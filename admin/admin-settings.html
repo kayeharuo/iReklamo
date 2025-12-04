@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings</title>
+
+    <!--Favicon-->
+    <link rel="icon" href="/icons/vito logo.png" type="image/x-icon">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/styles/admin-settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!--Google Font: Inter-->
+    <link rel="preconnect" href="/https://fonts.googleapis.com">
+    <link rel="preconnect" href="/https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!--Supabase-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/scripts/supabaseClient.js"></script>
+    
+    <script src="/scripts/admin-settings.js" defer></script>
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+
+    <!--Navbar section-->
+    <div class="navbar">
+        <div class="leftside">
+            <img src="/icons/vito logo.png" class="nav-logo">
+            <img src="/icons/mingla logo.png" class="nav-logo">
+            <img src="/icons/ph logo.png" class="nav-logo">
+        </div>
+
+        <div class="rightside">
+            <p>iReklamo Admin</p>
+        </div>
+    </div>
+
+    <!--BODY-->
+    <section class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <div class="profile-img">
+                    <img src="/icons/default-avatar.png" alt="Profile">
+                </div>
+                <h3></h3>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a href="/admin/admin-dashboard.html">
+                        <span class="menu-item">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <span class="menu-item">Manage Records</span>
+                        <span class="dropdown-icon">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/admin/admin-managecomplaints.html">Complaints</a></li>
+                        <li><a href="/admin/admin-manageincidents.html">Incidents</a></li>
+                    </ul>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <span class="menu-item">Manage Users</span>
+                        <span class="dropdown-icon">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/admin/admin-manageresident.html">Residents</a></li>
+                        <li><a href="/admin/admin-manageadmin.html">Admins</a></li>
+                        <li><a href="/admin/admin-managedeact.html">Deactivated Admins</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/admin-settings.html">
+                        <span class="menu-item">Account Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="logoutLink" href="/admin/admin-landing.html">
+                        <span class="menu-item">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <!--ACCOUNT INFORMATION CARD-->
+            <div class="card1">
+                <div class="header">
+                    <h4>ACCOUNT INFORMATION</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="username">E-mail</label>
+                        <input type="text" id="username" name="username" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="contact">Contact Number</label>
+                        <input type="tel" id="contact" name="contact" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="position">Position</label>
+                        <input type="text" id="position" name="position" disabled>
+                    </div>
+                </div>
+                <button id="editacc">EDIT</button>
+            </div>
+
+            <!--PERSONAL INFORMATION-->
+            <div class="card2">
+                <div class="header">
+                    <h4>PERSONAL INFORMATION</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="mname">Middle Name</label>
+                        <input type="text" id="mname" name="mname" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="suffix">Suffix (if applicable)</label>
+                        <input type="text" id="suffix" name="suffix" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="gender">Gender</label>
+                        <input type="text" id="gender" name="gender" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="address">Complete Address</label>
+                        <input type="text" id="address" name="address" disabled>
+                    </div>
+                </div>
+                <button id="editpersonal">EDIT</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Account Modal -->
+    <div id="editAccountModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>EDIT ACCOUNT INFORMATION</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editAccountForm">
+                    <div class="form-group">
+                        <label for="editUsername">E-mail</label>
+                        <input type="email" id="editUsername" name="username" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editPassword">Password (leave blank to keep current)</label>
+                        <div class="password-container">
+                            <input type="password" id="editPassword" name="password" placeholder="Enter new password (optional)">
+                            <i class="fas fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editContact">Contact Number</label>
+                        <input type="tel" id="editContact" name="contact" placeholder="+63 917 123 4567" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editPosition">Position</label>
+                        <select id="editPosition" name="position" required>
+                            <option value="" disabled>Select position</option>
+                            <option value="Barangay Secretary">Barangay Secretary</option>
+                            <option value="IT Consultant">IT Consultant</option>
+                            <option value="Barangay Staff">Barangay Staff</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Personal Information Modal -->
+    <div id="editPersonalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>EDIT PERSONAL INFORMATION</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editPersonalForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editFirstName">First Name</label>
+                            <input type="text" id="editFirstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editLastName">Last Name</label>
+                            <input type="text" id="editLastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editMiddleName">Middle Name</label>
+                            <input type="text" id="editMiddleName" name="middleName">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editSuffix">Suffix (if applicable)</label>
+                            <input type="text" id="editSuffix" name="suffix">
+                        </div>
+                        <div class="form-group">
+                            <label for="editGender">Gender</label>
+                            <select id="editGender" name="gender" required>
+                                <option value="" disabled selected>Select your gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDob">Date of Birth</label>
+                            <input type="date" id="editDob" name="dob" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="editAddress">Complete Address</label>
+                        <input type="text" id="editAddress" name="address" required>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--LOGOUT MODAL-->
+    <div id="logoutModal" class="logout-modal">
+        <div class="logout-modal-content">
+            <div class="logout-modal-header">
+                <h2>Confirm Logout</h2>
+            </div>
+            <div class="logout-modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="logout-modal-footer">
+                <button id="cancelLogout" class="logout-btn-cancel">Cancel</button>
+                <button id="confirmLogout" class="logout-btn-confirm">Logout</button>
+            </div>
+        </div>
+    </div>
+    
+    <!--footnote-->
+    <section class="footnote">
+       <p>© 2025 iReklamo. All rights reserved.</p>
+    </section>
+
+    <script src="/scripts/admin-session-manager.js" defer></script>
+</body>
+
+</html>

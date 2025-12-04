@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!--Favicon-->
+    <link rel="icon" href="/icons/vito logo.png" type="image/x-icon">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/styles/user-registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!--Google Font: Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+    <!--Navbar section-->
+    <div class="navbar">
+        <div class="leftside">
+            <img src="/icons/vito logo.png" class="nav-logo">
+            <img src="/icons/mingla logo.png" class="nav-logo">
+            <img src="/icons/ph logo.png" class="nav-logo">
+        </div>
+
+        <div class="rightside">
+            <p>Already have an account?</p>
+            <button id="login" onclick="window.location.href='user-landing.html'">LOGIN</button>
+        </div>
+    </div>
+
+    <!--BODY-->
+    <section class="body">
+        <div class="topside">
+            <p>Naay problema? iReklamo!</p>
+            <h1>BARANGAY VITO COMPLAINT AND INCIDENT REPORTING SYSTEM</h1>
+        </div>
+
+        <!--LOGIN CREDENTIAL-->
+        <div class="bottompart active">
+            <div class="header">
+                <h4>ACCOUNT REGISTRATION</h4>
+                <p>1) Log-In Credential</p>
+            </div>
+
+            <div class="credential">
+                <label for="email">E-mail Address *</label>
+                <input type="email" id="email" name="email" placeholder="Enter here" required>
+                <div id="email-validation" class="validation-message"></div>
+
+                <label for="password">Password *</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Enter here" required>
+                    <i class="fas fa-eye-slash toggle-password"></i>
+                </div>
+
+                <div class="password-requirements">
+                    <p>Password must contain:</p>
+                    <ul>
+                        <li id="req-lowercase">at least one lower character (a-z)</li>
+                        <li id="req-uppercase">at least one upper character (A-Z)</li>
+                        <li id="req-number">at least one digit character (0-9)</li>
+                        <li id="req-special">at least one special character (ie. ~`!@)</li>
+                        <li id="req-length">at least 8 characters (ie. exAmple1#)</li>
+                    </ul>
+                </div>
+
+                <label for="confirmpw">Confirm Password *</label>
+                <div class="password-container">
+                    <input type="password" id="confirmpw" name="confirmpw" placeholder="Enter here" required>
+                    <i class="fas fa-eye-slash toggle-password"></i>
+                </div>
+                <div id="confirmpw-validation" class="validation-message"></div>
+
+                <label for="phonenum">Phone Number *</label>
+                <input type="tel" id="phonenum" name="phonenum" placeholder="09xxxxxxxxx" maxlength="11" required>
+
+                <div class="credentialbutton">
+                    <button id="back" onclick="window.location.href='user-landing.html'">BACK</button>
+                    <button id="next">NEXT</button>
+                </div>
+            </div>
+        </div>
+
+        <!--PERSONAL DETAILS-->
+        <div class="bottompart">
+            <div class="header">
+                <h4>ACCOUNT REGISTRATION</h4>
+                <p>2) Personal Details</p>
+            </div>
+
+            <div class="personal">
+                <div class="row">
+                    <div class="first">
+                        <label for="fname">First Name *</label>
+                        <input type="text" id="fname" name="fname" placeholder="Enter here" required>
+                    </div>
+                    <div class="second">
+                        <label for="lname">Last Name *</label>
+                        <input type="text" id="lname" name="lname" placeholder="Enter here" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="first">
+                        <label for="mname">Middle Name</label>
+                        <input type="text" id="mname" name="mname" placeholder="Enter here">
+                    </div>
+
+                    <div class="second">
+                        <label for="suffix">Suffix (if applicable)</label>
+                        <input type="text" id="suffix" name="suffix" placeholder="Enter here">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="first">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+
+                    <div class="second">
+                        <label for="gender">Gender *</label>
+                        <select id="gender" required>
+                            <option value="" disabled selected>Select your gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row4">
+                    <label for="address">Complete Current Address *</label>
+                    <input type="text" id="address" name="address" placeholder="Enter here" required>
+                </div>
+                
+                    <div class="personalbutton">
+                        <button id="back">BACK</button>
+                        <button id="next">NEXT</button>
+                    </div>
+            </div>
+        </div>
+
+
+        <!--OATH OF UNDERTAKING-->
+        <div class="bottompart">
+            <div class="header">
+                <h4>ACCOUNT REGISTRATION</h4>
+                <p>3) Oath of Undertaking</p>
+            </div>
+
+            <div class="oathcard">
+                <p>Your registration in this system means that you agree to disclose all information 
+                    required for the resolution of your dispute/complaint. </p>
+                <a id="viewConsentForm">(Click here to view the Consent Form).</a>
+                <label><input type="checkbox" name="oath" id="oath" required> I agree to the Consent Form.</label>
+
+                <div class="oathbutton">
+                    <button id="done">DONE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--footnote-->
+    <section class="footnote">
+        <div class="republiclogo">
+            <img src="/icons/republic logo.png" id="republiclogo">
+        </div>
+
+        <div class="firstcolumn">
+            <div class="first">
+                <h6>REPUBLIC OF THE PHILIPPINES</h6>
+                <p>All content is in the public domain unless otherwise stated.</p>
+            </div>
+            <div class="second">
+                <h6>CONTACT NO. / TRUNK LINES</h6>
+                <p>0942-744-2287 / 402-0139</p>
+            </div>
+        </div>
+
+        <div class="secondcolumn">
+            <div class="first">
+                <h6>ABOUT GOVPH</h6>
+                <p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
+            </div>
+
+            <div class="second">
+                <ul>
+                    <li><a href="http://www.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">GOV.PH</a></li>
+                    <li><a href="http://www.officialgazette.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Official Gazette</a></li>
+                    <li><a href="https://data.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Open Data Portal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="thirdcolumn">
+            <p style="color: #979797; font-size: 12.1pt; margin-bottom: 20px;">GOVERNMENT LINKS</p>
+            <ul>
+                <li><a href="https://pco.gov.ph/" target="_blank" rel="noopener noreferrer"  style="color: #979797;">Office of the President</a></li>
+                <li><a href="https://www.ovp.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Office of the Vice President</a></li>
+                <li><a href="https://senate.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Senate of the Philippines</a></li>
+                <li><a href="https://www.congress.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">House of Representatives</a></li>
+                <li><a href="https://sc.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Supreme Court</a></li>
+                <li><a href="https://ca.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Court of Appeals</a></li>
+                <li><a href="https://sb.judiciary.gov.ph/" target="_blank" rel="noopener noreferrer" style="color: #979797;">Sandiganbayan</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Load Supabase from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Load your Supabase config -->
+    <script src="/scripts/supabaseClient.js"></script>
+
+    <!--Javascript-->
+    <script src="/scripts/user-registration.js"></script>
+</body>
+
+</html>

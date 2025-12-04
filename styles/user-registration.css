@@ -1,0 +1,521 @@
+html {
+    scroll-behavior: smooth; 
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+    height: 120px;
+}
+
+.navbar .leftside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+    width: 40%;
+}
+
+.navbar .leftside .nav-logo {
+    width: 85px;
+    height: 85px;
+    margin-right: 15px;
+}
+
+.navbar .rightside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 240px;
+    width: 40%;
+}
+
+.navbar .rightside #login {
+    background-color: #1e15b6;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 133px;
+    height: 45px;
+    font-size: 11pt;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar .rightside #login:hover {
+    cursor: pointer;
+    background-color: #161175;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.body .topside {
+    display: flex;
+    flex-direction: column;
+    background-color: #3f761f;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    height: 212px;
+    margin-bottom: 40px;
+}
+
+.body .topside p {
+    text-align: center;
+    font-size: 15pt;
+    margin-bottom: 10px;
+}
+
+.body .topside h1 {
+    width: 70%;
+    text-align: center;
+    font-size: 38pt;
+}
+
+/*card 1*/
+
+.body .bottompart {
+    display: none;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.body .bottompart.active {
+    display: flex;
+    opacity: 1;
+}
+
+.body .bottompart .header h4 {
+    color: #545454;
+    font-size: 13.4pt;
+    margin-bottom: 35px;
+}
+
+.body .bottompart .header p {
+    color: #545454;
+    font-size: 12.4pt;
+    font-weight: bold;
+}
+
+.body .bottompart .credential {
+    background-color: white;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 648px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.body .bottompart .personal {
+    background-color: white;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 648px;
+    height: auto;
+    margin-top: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.body .bottompart .oathcard {
+    background-color: white;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 648px;
+    height: auto;
+    margin-top: 10px;
+    padding: 40px;
+}
+
+.body .bottompart .credential label {
+    color: #545454;
+    font-size: 13.4pt;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}   
+
+.body .bottompart .personal .row {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.body .bottompart .personal .row4 {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.body .bottompart .personal .row .first,
+.body .bottompart .personal .row .second,
+.body .bottompart .personal .row4 {
+    display: flex;
+    flex-direction: column;
+}
+
+.body .bottompart .personal .row .first label,
+.body .bottompart .personal .row .second label{
+    color: #545454;
+    font-size: 13.4pt;
+    margin-bottom: 10px;
+}
+
+.body .bottompart .personal .row4 label {
+    color: #545454;
+    font-size: 13.4pt;
+    margin-left: 40px;
+}
+
+.body .bottompart .oathcard p,
+.body .bottompart .oathcard label {
+    color: #545454;
+    font-size: 13.4pt;
+    text-align: justify;
+    line-height: 1.5rem;
+}
+
+.body .bottompart .oathcard a {
+    color:#1e15b6;
+    font-size: 13.4pt;
+    margin-bottom: 20px;
+}
+
+.body .bottompart .oathcard a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.body .bottompart .personal .row #fname, #lname, #mname, #suffix, #dob, #gender {
+    width: 271px;
+    height: 54px;
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    font-size: 12.4pt;
+    padding-left: 15px;
+}
+
+.body .bottompart .credential #email, #password, #confirmpw, #phonenum,
+.body .bottompart .personal #address {
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    font-size: 12.4pt;
+    width: 562px;
+    height: 54px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+.body .bottompart li {
+    color: #737373;
+    font-size: 10.3pt;
+    font-style: italic;
+    margin-left: 70px;
+}
+
+.body .bottompart ul {
+    margin-bottom: 20px;
+}
+
+.body .bottompart .credentialbutton {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 40px;
+    margin-top: 15px;
+}
+
+.body .bottompart .personalbutton {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 40px;
+    margin-top: -15px;
+}
+
+.body .bottompart .oathbutton #done {
+    order: none;
+    border-radius: 10px;
+    background-color: #1e15b6;
+    color: white;
+    font-size: 11pt;
+    width: 86px;
+    height: 39px;
+    border: none;
+    margin-top: 25px;
+}
+
+.body .bottompart .credential .credentialbutton #back,
+.body .bottompart .personal .personalbutton #back {
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    background-color: white;
+    color: #1e15b6;
+    font-size: 11pt;
+    width: 86px;
+    height: 39px;
+}
+
+.body .bottompart .credential .credentialbutton #next,
+.body .bottompart .personal .personalbutton #next {
+    border: none;
+    border-radius: 10px;
+    background-color: #1e15b6;
+    color: white;
+    font-size: 11pt;
+    width: 86px;
+    height: 39px;
+}
+
+.body .bottompart .credential .credentialbutton #back:hover,
+.body .bottompart .personal .personalbutton #back:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+.body .bottompart .credential .credentialbutton #next:hover,
+.body .bottompart .personal .personalbutton #next:hover,
+.body .bottompart .oathbutton #done:hover {
+    cursor: pointer;
+    background-color: #161175;
+}
+
+/* Add to your existing CSS */
+.password-container {
+    position: relative;
+    width: 562px;
+    margin: 0 auto 20px auto;
+}
+
+.password-container input {
+    margin-bottom: 0 !important;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+input.error, select.error {
+    border-color: #ff0000 !important;
+}
+
+input.valid {
+    border-color: #10b981 !important;
+}
+
+input.invalid {
+    border-color: #ff0000 !important;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #1e15b6 !important;
+}
+
+.validation-message {
+    font-size: 11pt;
+    margin-top: 5px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.validation-message.error {
+    color: #ff0000;
+}
+
+.validation-message.success {
+    color: #10b981;
+}
+
+.password-requirements {
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.password-requirements p {
+    color: #737373;
+    font-size: 10.3pt;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.password-requirements ul {
+    margin-bottom: 0;
+}
+
+.password-requirements li {
+    color: #737373;
+    font-size: 10.3pt;
+    font-style: italic;
+    margin-left: 70px;
+    transition: color 0.3s;
+}
+
+.password-requirements li.met {
+    color: #10b981;
+}
+
+.password-requirements li.unmet {
+    color: #ff0000;
+}
+
+/* Animation for error shake */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+.footnote {
+    display: flex;
+    flex-direction: row;
+    background-color: #efefef;
+    width: 100%;
+    height: 266px;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.footnote .republiclogo #republiclogo {
+    width: 174px;
+    height: 174px;
+    margin-right: 50px;
+}
+
+.foonote .firstcolumn {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footnote .firstcolumn .first {
+    margin-bottom: 35px;
+}
+
+.footnote .firstcolumn .first h6 {
+    font-weight: normal;
+    font-size: 12.1pt;
+    color: #979797;
+    margin-bottom: 20px;
+}
+
+.footnote .firstcolumn .first p {
+    color: #979797;
+    font-size: 11.1pt;
+    width: 294px;
+}
+
+.footnote .firstcolumn .second h6 {
+    font-weight: normal;
+    font-size: 12.1pt;
+    color: #979797;
+    margin-bottom: 20px;
+}
+
+.footnote .firstcolumn .second p {
+    color: #979797;
+    font-size: 11.1pt;
+}
+
+.footnote .secondcolumn {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 319px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.foonote .secondcolumn .first {
+    display: flex;
+    flex-direction: column;
+}
+
+.footnote .secondcolumn .first h6 {
+    font-weight: normal;
+    font-size: 12.1pt;
+    color: #979797;
+    margin-bottom: 20px;
+}
+
+.footnote .secondcolumn p {
+    color: #979797;
+    font-size: 11.1pt;
+}
+
+.footnote .secondcolumn li {
+    color: #979797;
+    font-size: 11.1pt;
+    list-style-type: none;
+    line-height: 1.3rem;
+}
+
+.footnote .secondcolumn li a:hover {
+    text-decoration: underline;
+}
+
+.footnote .thirdcolumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.footnote .thirdcolumn  li {
+    color: #979797;
+    font-size: 11.1pt;
+    list-style-type: none;
+    line-height: 1.3rem;
+}
+
+.footnote .thirdcolumn li a:hover {
+    text-decoration: underline;
+}
