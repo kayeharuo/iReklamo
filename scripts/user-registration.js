@@ -304,7 +304,7 @@ async function registerUser() {
     try {
         const doneBtn = document.querySelector('#done');
         doneBtn.disabled = true;
-        doneBtn.textContent = 'CREATING ACCOUNT...';
+        doneBtn.textContent = 'CREATING';
 
         //create auth user with email confirmation
         const { data: authData, error: authError } = await supabaseClient.auth.signUp({
@@ -448,7 +448,7 @@ nextBtns.forEach(btn => {
             const email = emailInput.value.trim();
 
             btn.disabled = true;
-            btn.textContent = 'CHECKING...';
+            btn.textContent = 'CHECKING';
 
             try {
                 const { data, error } = await supabaseClient.rpc('check_email_availability', {
@@ -581,7 +581,7 @@ function showPendingConfirmationModal(email, hoursRemaining) {
     document.getElementById('resendEmailBtn').addEventListener('click', async () => {
         const btn = document.getElementById('resendEmailBtn');
         btn.disabled = true;
-        btn.textContent = 'SENDING...';
+        btn.textContent = 'SENDING';
 
         try {
             // Resend with proper redirect URL - this invalidates the old token

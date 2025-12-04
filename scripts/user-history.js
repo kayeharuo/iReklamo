@@ -1,4 +1,6 @@
 let loggedInUser = null;
+let confirmWithdraw = null;
+
 
 window.addEventListener('DOMContentLoaded', async () => {
     window.scrollTo(0, 0);
@@ -102,7 +104,7 @@ function populateHistoryTable(complaints) {
             <td>
                 <button class="view-btn" onclick="viewComplaint(${complaint.vci_id})">View</button>
                 ${canWithdraw(status?.vcistat_current_stat) ? 
-                    `<button class="withdraw-btn" onclick="withdrawComplaint(${complaint.vci_id}, '${complaint.vci_tracking}')">Withdraw</button>` 
+                    `<button class="withdraw-btn" onclick="withdrawComplaint(${complaint.vci_id}, '${complaint.vci_tracking}', event)">Withdraw</button>` 
                     : '<span style="color: #9ca3af; font-size: 13px;">Withdrawn</span>'}
             </td>
         `;
@@ -516,13 +518,8 @@ function getStatusColor(status) {
 }
 
 
-
 //WITHDRAW COMPLAINT
-async function withdrawComplaint(vci_id, trackingNumber) {
-    const confirmWithdraw = confirm(`Are you sure you want to withdraw complaint ${trackingNumber}?\n\nThis action cannot be undone.`);
-    
-    if (!confirmWithdraw) return;
-
+async function withdrawComplaint(vci_id, trackingNumber, event) {
     // Prevent double-clicking
     const withdrawBtn = event.target;
     if (withdrawBtn.disabled) {
@@ -530,10 +527,25 @@ async function withdrawComplaint(vci_id, trackingNumber) {
         return;
     }
 
+    confirmWithdraw = null;
+    showWithdrawModal(trackingNumber);
+    
+    // Wait for user action
+    await new Promise(resolve => {
+        const checkInterval = setInterval(() => {
+            if (confirmWithdraw !== null) {
+                clearInterval(checkInterval);
+                resolve();
+            }
+        }, 100);
+    });
+
+    if(!confirmWithdraw) return;
+
     try {
         withdrawBtn.disabled = true;
         withdrawBtn.style.opacity = '0.5';
-        withdrawBtn.textContent = 'Processing...';
+        withdrawBtn.textContent = 'Processing';
         
         console.log('Withdrawing complaint VCI_ID:', vci_id);
 
@@ -572,7 +584,7 @@ async function withdrawComplaint(vci_id, trackingNumber) {
         console.log('✅ Status updated to Resolved/Closed:', updatedStatus);
         console.log('✅ Timeline entry created automatically by database trigger');
 
-        alert(`Complaint ${trackingNumber} has been withdrawn and is now Resolved/Closed.`);
+        showWithdrawCompleteModal(trackingNumber);
 
         console.log('🔄 Reloading complaint history...');
         await loadComplaintHistory();
@@ -586,6 +598,277 @@ async function withdrawComplaint(vci_id, trackingNumber) {
         withdrawBtn.style.opacity = '1';
         withdrawBtn.textContent = 'Withdraw';
     }
+}
+
+//show withdraw modal
+function showWithdrawModal(trackingNumber) {
+    const modalHTML = `
+        <div id="withdrawModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Confirm Withdrawal</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to withdraw ${trackingNumber}?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelWithdraw" class="btn-cancel">Cancel</button>
+                    <button id="confirmBtn" class="btn-confirm">Confirm</button>
+                </div>
+            </div>
+        </div>
+    `
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    const modal = document.getElementById("withdrawModal");
+    modal.classList.add("show");
+
+    //event listeners
+    document.getElementById("cancelWithdraw").onclick = () => {
+        confirmWithdraw = false;
+        modal.remove();
+    };
+    document.getElementById("confirmBtn").onclick = () => {
+        confirmWithdraw = true;
+        modal.remove();
+    };
+
+    const modalStyle = document.createElement('style');
+    modalStyle.textContent = `
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.2s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 24px 24px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .modal-body {
+            padding: 20px 24px;
+        }
+
+        .modal-body p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .modal-footer button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cancel {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e5e7eb;
+        }
+
+        .btn-confirm {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background-color: #dc2626;
+        }
+
+        .btn-confirm:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(modalStyle);
+}
+
+//WITHDRAW COMPLETED MODAL
+function showWithdrawCompleteModal(trackingNumber) {
+    const modalHTML = `
+        <div id="withdrawSuccessModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Withdrawal Successful</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Complaint ${trackingNumber} has been withdrawn and is now marked as Resolved.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeForm" class="btn-cancel">Close</button>
+                </div>
+            </div>
+        </div>
+    `
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    const modal = document.getElementById("withdrawSuccessModal");
+    modal.classList.add("show");
+
+    //event listener
+    document.getElementById("closeForm").onclick = () => {
+        modal.remove();
+    };
+
+    const modalStyle = document.createElement('style');
+    modalStyle.textContent = `
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.2s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 24px 24px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .modal-body {
+            padding: 20px 24px;
+        }
+
+        .modal-body p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .modal-footer button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cancel {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e5e7eb;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(modalStyle);
 }
 
 
